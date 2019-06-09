@@ -1,32 +1,39 @@
 .landing-page {
-  height: 300px;
+  height: 100em;
   position: relative;
-  visibility: hidden;
-  /* background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3); */
+  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* .landing-page .content{
+  overflow: scroll;
+} */
+
 .welcome-page {
-  visibility: visible;
+
+}
+
+.landing-page .navbar {
+  
 }
 
 body {
   height: 100%;
   background: black;
-  overflow: hidden;
 }
 
 /* for eyeball */
 
-.move-area {
+.eye-container {
   width: 100vw;
   height: 100vh;
   justify-content: center;
   align-items: center;
   display: flex;
-}
-
-.container {
-  width: 100%;
 }
 
 .eye {

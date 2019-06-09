@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import Welcome from './welcome'
@@ -9,15 +9,20 @@ import AboutMe from './aboutme'
 import Contact from './contact'
 
 
-const Main = () => (
-  <Switch>
-    <Route exact path="/" component={Welcome} />
-    <Route exact path="/landing" component={LandingPage} />
-    <Route path="/resume" component={Resume} />
-    <Route path="/projects" component={Projects} />
-    <Route path="/aboutme" component={AboutMe} />
-    <Route path="/contact" component={Contact} />
-  </Switch>
-)
+class Main extends Component {
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/" component={Welcome} />
+        <Route path="/resume">
+          <Resume data={this.props.resume} />
+        </Route>
+        <Route path="/projects" component={Projects} />
+        <Route path="/aboutme" component={AboutMe} />
+        <Route path="/contact" component={Contact} />
+      </Switch>
+    )
+  } // end of render()
+} // end of Main
 
 export default Main
