@@ -7,7 +7,7 @@ class Projects extends Component {
         <h1>Projects</h1>
       </div>
     )
-  }
-}
+  } // end of render()
+} // end of Projects
 
 export default Projects

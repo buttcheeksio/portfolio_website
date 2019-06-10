@@ -28,6 +28,7 @@ class Welcome extends Component {
   } // end of movePupil()
 
   render() {
+
     return (
       <div className='welcome-page' onMouseMove={(event) => this.ifEyeHasNotBeenClicked(event)}>
         <div className='eye-container'>
@@ -35,7 +36,7 @@ class Welcome extends Component {
             <div
               className='pupil'
               id='not-clicked'
-              onClick={() => this.props.eyeClick(pupil[0])}
+              onClick={() => this.props.eyeClick(eye[0], pupil[0])}
               />
           </div>
         </div>

@@ -10,11 +10,12 @@ class LandingPage extends Component {
     return (
       <div className='landing-page'>
         <Layout>
-          <Header transparent className='navbar' title='John Martinez'>
-            <Navigation>
-              <Link to="/resume">Resume</Link>
-              <Link to="/projects">Projects</Link>
+          <Header className='navbar' title='John Martinez'>
+            <Navigation id='navigation'>
+              <Link left to="/home">Home</Link>
               <Link to="/aboutme">About Me</Link>
+              <Link to="/projects">Projects</Link>
+              <Link to="/resume">Resume</Link>
               <Link to="/contact">Contact</Link>
             </Navigation>
           </Header>
@@ -24,9 +25,10 @@ class LandingPage extends Component {
           <Footer size="mini">
             <FooterSection type="left" logo="John Martinez">
               <FooterLinkList>
-                <Link to="/resume">Resume</Link>
-                <Link to="/projects">Projects</Link>
+                <Link left to="/home">Home</Link>
                 <Link to="/aboutme">About Me</Link>
+                <Link to="/projects">Projects</Link>
+                <Link to="/resume">Resume</Link>
                 <Link to="/contact">Contact</Link>
               </FooterLinkList>
             </FooterSection>

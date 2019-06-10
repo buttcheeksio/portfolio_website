@@ -1,24 +1,9 @@
-.landing-page {
-  height: 100em;
-  position: relative;
-  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-
+* {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-::-webkit-scrollbar {
-    display: none;
-}
-
-/* .landing-page .content{
-  overflow: scroll;
-} */
-
-.welcome-page {
-
-}
-
-.landing-page .navbar {
-  
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -26,7 +11,98 @@ body {
   background: black;
 }
 
-/* for eyeball */
+/**** landing page-related CSS ****/
+
+.landing-page {
+  height: 100em;
+  position: relative;
+  background: white;
+}
+
+.landing-page .navbar {
+  background: black;
+}
+
+.landing-page .navbar #navigation {
+  color: black;
+}
+
+.landing-page .navbar {
+
+}
+
+/**** end of landing page-related CSS ****/
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/**** home-related CSS ****/
+
+.home-container .section {
+  height: 33em;
+  padding-left: 8em;
+  padding-right: 8em;
+  padding-top: 2em;
+}
+
+.home-container #resume {
+  background: lightgrey;
+}
+
+.home-container #about-me {
+  background: lightgrey;
+}
+
+.home-container span {
+  display: -webkit-flex; /* Safari */
+  -webkit-align-items: center; /* Safari 7.0+ */
+  display: flex;
+  align-items: center;
+}
+
+/**** end of home-related CSS ****/
+
+/**** resume-related CSS ****/
+
+.resume-container {
+  padding-right: 8em;
+  padding-left: 8em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.resume-container ul {
+  list-style: none;
+}
+
+.resume-container h4 {
+  background: lightgrey;
+}
+
+.resume-container span {
+  display: inline-block;
+}
+
+.resume-container h6 {
+
+}
+
+.resume-container #name {
+  text-align: center;
+
+}
+
+.resume-container #contact-info {
+  text-align: center;
+}
+
+/**** end of resume-related CSS ****/
+
+.welcome-page {
+
+}
+
+/**** eyeball-related CSS ****/
 
 .eye-container {
   width: 100vw;
@@ -42,7 +118,7 @@ body {
   background: white;
   border-radius: 50%;
   position: relative;
-  transition: animation 2s, box-shadow 2s;
+  transition: animation 2s, box-shadow 2s, width 2s, height 2s, opacity 2s;
 }
 
 .eye:hover {
@@ -71,8 +147,8 @@ body {
 }
 
 .pupil {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   background: black;
   position: absolute;
   top: 50%;
@@ -120,3 +196,9 @@ body {
       50%{background-position:100% 19%}
       100%{background-position:0% 82%}
   }
+
+  /* .eye .disabled {
+    pointer-events: none;
+  } */
+
+  /**** end of eyeball-related CSS ****/

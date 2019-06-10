@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Link } from 'react-router-dom'
+import { Layout, Header, Navigation, Content, Footer, FooterSection, FooterLinkList } from 'react-mdl'
+
+import Main from './Components/main'
 
 import Welcome from './Components/welcome'
 import LandingPage from './Components/landingpage'
@@ -140,12 +144,20 @@ class App extends Component {
     } // end of resume
   } // end of state
 
-  eyeClick = (pupil) => {
-    pupil.style.width = "1000em"
-    pupil.style.height = "1000em"
+  eyeClick = (eye, pupil) => {
+    /* changes appearance of eye when clicked */
+    /* utilized in welcome.js */
 
-    this.setState({stopEyeMovement: true})
-    setTimeout(() => {this.setState({eyeClicked: true})}, 300)
+    eye.style.opacity = "0.25"
+    eye.style.width = "120px"
+    eye.style.height = "60px"
+
+    pupil.style.width = "40px"
+    pupil.style.height = "40px"
+
+
+    this.setState({stopEyeMovement: false})
+    setTimeout(() => {this.setState({eyeClicked: true})}, 3000)
   } // end of eyeClick()
 
   renderLandingPageOrWelcome = () => {
@@ -157,10 +169,35 @@ class App extends Component {
   } // end of renderPage()
 
   render() {
-    // console.log(this.props)
     return (
       <div className='wrapping-div'>
-        { this.renderLandingPageOrWelcome() }
+        <Welcome eyeClick={this.eyeClick} state={this.state} />
+
+        <Layout>
+          <Header className='navbar' title='John Martinez'>
+            <Navigation id='navigation'>
+              <Link left to="/home">Home</Link>
+              <Link to="/aboutme">About Me</Link>
+              <Link to="/projects">Projects</Link>
+              <Link to="/resume">Resume</Link>
+              <Link to="/contact">Contact</Link>
+            </Navigation>
+          </Header>
+          <Content className='content'>
+
+          </Content>
+          <Footer size="mini">
+            <FooterSection type="left" logo="John Martinez">
+              <FooterLinkList>
+                <Link left to="/home">Home</Link>
+                <Link to="/aboutme">About Me</Link>
+                <Link to="/projects">Projects</Link>
+                <Link to="/resume">Resume</Link>
+                <Link to="/contact">Contact</Link>
+              </FooterLinkList>
+            </FooterSection>
+          </Footer>
+        </Layout>
       </div>
     )
   } // end of render()
