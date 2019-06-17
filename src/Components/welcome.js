@@ -1,45 +1,62 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { Layout, Header, Navigation, Content, Footer, FooterSection, FooterLinkList } from 'react-mdl'
+
+import Main from './main'
+import AboutMe from './aboutme'
+import Projects from './projects'
+import Resume from './resume'
+import Contact from './contact'
 
 let landingPage = document.getElementsByClassName("landing-page")
 let welcomePage = document.getElementsByClassName("welcome-page")
 let pupil = document.getElementsByClassName("pupil")
 let eye = document.getElementsByClassName("eye")
+let layout = document.getElementsByClassName("layout")
 
+let resumeURL = 'https://drive.google.com/file/d/13lrw6QyY4fEzIPSBPp4JhG1glUI3moSB/view?usp=sharing'
 
 class Welcome extends Component {
-
-  ifEyeHasNotBeenClicked = (event) => {
-    if (!this.props.state.stopEyeMovement) {
-      this.movePupil(event)
-    }
-  } // end of ifEyeHasNotBeenClicked()
-
-  movePupil = (event) => {
-    /*
-    event.clientX/Y gets the horizontal/vertical coordinate of the onmousemove
-    window.innerWidth/Height gets the browser width/height
-    */
-    let x = event.clientX * 100 / window.innerWidth + "%"
-    let y = event.clientY * 100 / window.innerHeight + "%"
-
-    pupil[0].style.left = x
-    pupil[0].style.top = y
-    pupil[0].style.transform = "translate(-"+x+", -"+y+")"
-  } // end of movePupil()
-
   render() {
-
     return (
-      <div className='welcome-page' onMouseMove={(event) => this.ifEyeHasNotBeenClicked(event)}>
+      <div
+        className='welcome-page'
+        onMouseMove={(event) => this.props.movePupil(event, pupil[0])}>
+
         <div className='eye-container'>
-          <div className='eye' id='not-hovered'>
+          <div className='eye'>
             <div
               className='pupil'
-              id='not-clicked'
-              onClick={() => this.props.eyeClick(eye[0], pupil[0])}
-              />
+              onClick={() => this.props.eyeClick(eye[0], pupil[0], layout[0])} />
           </div>
         </div>
+
+        <Layout className='layout'>
+          <Header className='navbar' transparent title="john miles martinez">
+              <Navigation>
+                  <a href='#aboutme'>About Me</a>
+                  <a href='#projects'>Projects</a>
+                  <a href={resumeURL} target='_blank'>Resume</a>
+                  <a href='#contact'>Contact</a>
+              </Navigation>
+          </Header>
+
+          <Content id='content'>
+            <AboutMe id='aboutme' state={this.props.state} />
+            <Projects id='projects' />
+            <Contact id='contact' />
+          </Content>
+
+          <Footer transparent size="mini">
+            <FooterSection  type="left" logo="john miles martinez">
+                <FooterLinkList>
+                    <a href="#">GitHub</a>
+                    <a href="#">Medium</a>
+                    <a href="#">LinkedIn</a>
+                </FooterLinkList>
+            </FooterSection>
+          </Footer>
+        </Layout>
       </div>
     )
   } // end of render()

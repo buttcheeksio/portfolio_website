@@ -1,41 +1,40 @@
-* {
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:100);
 
-html {
-  scroll-behavior: smooth;
+* {
+  font-family: 'Roboto Mono', monospace;
 }
 
 body {
-  height: 100%;
   background: black;
+  color: white;
+  overflow: hidden;
+  font-family: 'Roboto Mono', monospace;
 }
 
-/**** landing page-related CSS ****/
-
-.landing-page {
-  height: 100em;
-  position: relative;
-  background: white;
+.section h1 {
+  font-family: 'Roboto Mono', monospace;
 }
 
-.landing-page .navbar {
-  background: black;
+.welcome-page .layout .navbar {
+  font-family: 'Roboto Mono', monospace;
 }
 
-.landing-page .navbar #navigation {
-  color: black;
+.container {
+  height: 50em;
 }
 
-.landing-page .navbar {
-
+/**** hides scrollbar ****/
+html {
+  overflow: scroll;
 }
-
-/**** end of landing page-related CSS ****/
 
 ::-webkit-scrollbar {
-    display: none;
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }
+/**** end of hides scrollbar ****/
+
 
 /**** home-related CSS ****/
 
@@ -68,7 +67,6 @@ body {
 .resume-container {
   padding-right: 8em;
   padding-left: 8em;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .resume-container ul {
@@ -98,11 +96,57 @@ body {
 
 /**** end of resume-related CSS ****/
 
+/***** welcome-page-related CSS *****/
+
 .welcome-page {
 
 }
 
-/**** eyeball-related CSS ****/
+.welcome-page .layout {
+  z-index: -1000;
+  opacity: 0;
+    -webkit-transition: opacity 5s ease-in-out;
+    -moz-transition: opacity 5s ease-in-out;
+    -ms-transition: opacity 5s ease-in-out;
+    -o-transition: opacity 5s ease-in-out;
+    transition: opacity 5s ease-in-out;
+}
+
+/***** end of welcome-page-related CSS *****/
+
+.section {
+  padding: 5em;
+}
+
+.section .grid {
+  justify-content: center;
+}
+
+.section .project-block {
+  height: 500px;
+  width: 400px;
+  background: grey;
+  opacity: 0.6;
+}
+
+.section .contact-block {
+  height: 500px;
+  width: 500px;
+
+  background: grey;
+  opacity: 0.6;
+}
+
+.section h1 {
+  opacity: 1;
+    -webkit-transition: opacity 5s ease-in-out;
+    -moz-transition: opacity 5s ease-in-out;
+    -ms-transition: opacity 5s ease-in-out;
+    -o-transition: opacity 5s ease-in-out;
+    transition: opacity 5s ease-in-out;
+}
+
+/***** eyeball-related CSS *****/
 
 .eye-container {
   width: 100vw;
@@ -110,15 +154,16 @@ body {
   justify-content: center;
   align-items: center;
   display: flex;
+  position: fixed;
 }
 
-.eye {
+.eye-container .eye {
   width: 240px;
   height: 120px;
   background: white;
   border-radius: 50%;
-  position: relative;
-  transition: animation 2s, box-shadow 2s, width 2s, height 2s, opacity 2s;
+  position: fixed;
+  transition: box-shadow 2s, width 2s, height 2s, opacity 2s;
 }
 
 .eye:hover {
@@ -126,10 +171,10 @@ body {
   height: 120px;
   background: white;
   border-radius: 50%;
-  position: relative;
+  position: fixed;
   animation: shake 0.5s;
   animation-iteration-count: infinite;
-  box-shadow: 0 0 100px white;
+  box-shadow: 0 0 75px white;
 }
 
 @keyframes shake {
@@ -162,6 +207,7 @@ body {
   width: 120px;
   height: 120px;
   position: absolute;
+  z-index: -1000;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
@@ -174,31 +220,58 @@ body {
   -z-animation: rainbow 3s ease infinite;
   -o-animation: rainbow 3s ease infinite;
     animation: rainbow 3s ease infinite;
+}
+
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+/***** end of eyeball-related CSS *****/
+/* 
+body{
+  background: #AA3A3B;
+} */
+
+.triangle-container{
+  width: 500px;
+  margin: auto;
+  text-align:center;
+  border: 1px solid white;
+
+    &:hover, &:active{
+      .triangle{
+        transform: rotate(-180deg);
+      }
+    }
+
+  .triangle{
+    fill: transparent;
+    stroke: white;
+    stroke-width: 8;
+    transition: all 0.8s ease-in-out;
+
+  @keyframes mymove {
+    0%   {opacity:0}
+    50%  {opacity:1}
+    100% {opacity:0}
   }
 
-  @-webkit-keyframes rainbow {
-      0%{background-position:0% 82%}
-      50%{background-position:100% 19%}
-      100%{background-position:0% 82%}
+    transform-origin: 250px 250px;
   }
-  @-moz-keyframes rainbow {
-      0%{background-position:0% 82%}
-      50%{background-position:100% 19%}
-      100%{background-position:0% 82%}
-  }
-  @-o-keyframes rainbow {
-      0%{background-position:0% 82%}
-      50%{background-position:100% 19%}
-      100%{background-position:0% 82%}
-  }
-  @keyframes rainbow {
-      0%{background-position:0% 82%}
-      50%{background-position:100% 19%}
-      100%{background-position:0% 82%}
-  }
-
-  /* .eye .disabled {
-    pointer-events: none;
-  } */
-
-  /**** end of eyeball-related CSS ****/
+}

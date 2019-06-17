@@ -144,59 +144,82 @@ class App extends Component {
     } // end of resume
   } // end of state
 
-  eyeClick = (eye, pupil) => {
+  renderLandingPageOrWelcome = () => {
+    if (this.state.eyeClicked) {
+      return (
+        <LandingPage
+          state={this.state}
+          movePupil={this.movePupil} />
+      )
+    } else {
+      return (
+        <Welcome
+          state={this.state}
+          eyeClick={this.eyeClick}
+          movePupil={this.movePupil} />
+      )
+    }
+  } // end of renderLandingPageOrWelcome()
+
+  /***** eye functionality *****/
+
+  eyeClick = (eye, pupil, layout) => {
     /* changes appearance of eye when clicked */
     /* utilized in welcome.js */
 
     eye.style.opacity = "0.25"
     eye.style.width = "120px"
     eye.style.height = "60px"
+    eye.style.zIndex = "-1"
 
     pupil.style.width = "40px"
     pupil.style.height = "40px"
+    pupil.style.zIndex = "-1"
 
+    layout.style.opacity = "1"
+    layout.style.zIndex = "1"
 
-    this.setState({stopEyeMovement: false})
     setTimeout(() => {this.setState({eyeClicked: true})}, 3000)
+
+    /*
+    make it so when the eye is clicked, it changes the state to reflect
+    that change. I want it to then start loading in elements from landingpage
+    */
   } // end of eyeClick()
 
-  renderLandingPageOrWelcome = () => {
-    if (this.state.eyeClicked) {
-      return <LandingPage appState={this.state} />
-    } else {
-      return <Welcome eyeClick={this.eyeClick} state={this.state} />
+  ifEyeHasNotBeenClicked = (event, pupil) => {
+    /* utilized in welcome.js */
+
+    if (!this.state.stopEyeMovement) {
+      this.movePupil(event, pupil)
     }
-  } // end of renderPage()
+  } // end of ifEyeHasNotBeenClicked()
+
+  movePupil = (event, pupil) => {
+    /* event.clientX/Y gets the horizontal/vertical coordinate of the onmousemove
+    window.innerWidth/Height gets the browser width/height */
+    /* utilized in welcome.js */
+
+    let x = event.clientX * 100 / window.innerWidth + "%"
+    let y = event.clientY * 100 / window.innerHeight + "%"
+
+    pupil.style.left = x
+    pupil.style.top = y
+    pupil.style.transform = "translate(-"+x+", -"+y+")"
+  } // end of movePupil()
+
+  /***** end of eye functionality *****/
 
   render() {
     return (
-      <div className='wrapping-div'>
-        <Welcome eyeClick={this.eyeClick} state={this.state} />
-
+      <div className='app'>
         <Layout>
-          <Header className='navbar' title='John Martinez'>
-            <Navigation id='navigation'>
-              <Link left to="/home">Home</Link>
-              <Link to="/aboutme">About Me</Link>
-              <Link to="/projects">Projects</Link>
-              <Link to="/resume">Resume</Link>
-              <Link to="/contact">Contact</Link>
-            </Navigation>
-          </Header>
           <Content className='content'>
-
+            <Welcome
+              state={this.state}
+              eyeClick={this.eyeClick}
+              movePupil={this.movePupil} />
           </Content>
-          <Footer size="mini">
-            <FooterSection type="left" logo="John Martinez">
-              <FooterLinkList>
-                <Link left to="/home">Home</Link>
-                <Link to="/aboutme">About Me</Link>
-                <Link to="/projects">Projects</Link>
-                <Link to="/resume">Resume</Link>
-                <Link to="/contact">Contact</Link>
-              </FooterLinkList>
-            </FooterSection>
-          </Footer>
         </Layout>
       </div>
     )

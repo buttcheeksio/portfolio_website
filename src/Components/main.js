@@ -14,7 +14,9 @@ class Main extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={Welcome} />
+        <Route exact path="/">
+          { this.props.renderLandingPageOrWelcome() }
+        </Route>
         <Route exact path="/home" component={Home} />
         <Route path="/aboutme" component={AboutMe} />
         <Route path="/projects" component={Projects} />
