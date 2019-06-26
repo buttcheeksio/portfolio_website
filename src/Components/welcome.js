@@ -17,6 +17,7 @@ let layout = document.getElementsByClassName("layout")
 let resumeURL = 'https://drive.google.com/file/d/13lrw6QyY4fEzIPSBPp4JhG1glUI3moSB/view?usp=sharing'
 
 class Welcome extends Component {
+
   render() {
     return (
       <div
@@ -32,30 +33,20 @@ class Welcome extends Component {
         </div>
 
         <Layout className='layout'>
-          <Header className='navbar' transparent title="john miles martinez">
+          <Header className='navbar' transparent title=" ">
               <Navigation>
-                  <a href='#aboutme'>About Me</a>
+                  <a href='#aboutMe'>About Me</a>
                   <a href='#projects'>Projects</a>
                   <a href={resumeURL} target='_blank'>Resume</a>
                   <a href='#contact'>Contact</a>
               </Navigation>
           </Header>
 
-          <Content id='content'>
-            <AboutMe id='aboutme' state={this.props.state} />
-            <Projects id='projects' />
-            <Contact id='contact' />
+          <Content className='content'>
+            <section id='aboutMe'><AboutMe state={this.props.state} /></section>
+            <section id='projects'><Projects /></section>
+            <section id='contact'><Contact /></section>
           </Content>
-
-          <Footer transparent size="mini">
-            <FooterSection  type="left" logo="john miles martinez">
-                <FooterLinkList>
-                    <a href="#">GitHub</a>
-                    <a href="#">Medium</a>
-                    <a href="#">LinkedIn</a>
-                </FooterLinkList>
-            </FooterSection>
-          </Footer>
         </Layout>
       </div>
     )

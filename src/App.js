@@ -141,7 +141,8 @@ class App extends Component {
           ]
         },
       ], // end of employmentHistory
-    } // end of resume
+    }, // end of resume
+    index: ""
   } // end of state
 
   renderLandingPageOrWelcome = () => {
@@ -187,14 +188,6 @@ class App extends Component {
     */
   } // end of eyeClick()
 
-  ifEyeHasNotBeenClicked = (event, pupil) => {
-    /* utilized in welcome.js */
-
-    if (!this.state.stopEyeMovement) {
-      this.movePupil(event, pupil)
-    }
-  } // end of ifEyeHasNotBeenClicked()
-
   movePupil = (event, pupil) => {
     /* event.clientX/Y gets the horizontal/vertical coordinate of the onmousemove
     window.innerWidth/Height gets the browser width/height */
@@ -209,6 +202,7 @@ class App extends Component {
   } // end of movePupil()
 
   /***** end of eye functionality *****/
+
 
   render() {
     return (
